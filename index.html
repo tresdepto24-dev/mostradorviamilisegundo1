@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mostrador Principal // Vía del Milisegundo - Posta 1001</title>
+    <style>
+        :root {
+            --bg-base: #05070b;
+            --panel-bg: #0d1322;
+            --border-line: #26334d;
+            --gold-accent: #c59b27;
+            --gold-hover: #dfb135;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --screen-text: #38bdf8;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .mostrador-container {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-line);
+            border-top: 3px solid var(--gold-accent);
+            padding: 40px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 740px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+        }
+
+        .header-mostrador {
+            text-align: center;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .institucional-tag {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.65rem;
+            color: var(--gold-accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .sub-institucional {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .viewport-terminal {
+            background-color: #020407;
+            border: 1px solid var(--border-line);
+            border-radius: 2px;
+            padding: 30px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        #terminal-output {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--screen-text);
+        }
+
+        #terminal-output b {
+            color: #fbbf24;
+        }
+
+        .control-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-navegacion {
+            background: #111827;
+            color: var(--text-main);
+            border: 1px solid #374151;
+            padding: 12px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            border-radius: 2px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .btn-navegacion:hover {
+            background: #1f2937;
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+        }
+
+        .page-indicator {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .footer-mostrador {
+            margin-top: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.65rem;
+            color: #4b5563;
+            text-align: center;
+            border-top: 1px solid var(--border-line);
+            padding-top: 15px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mostrador-container">
+        <div class="header-mostrador">
+            <div class="institucional-tag">Posta 1001 // Ventaniya Oficial</div>
+            <h1>El Mostrador Principal de la Vía del Milisegundo</h1>
+            <div class="sub-institucional">Protocolo Soberano de Adhesión Institucional, Patrimonial y Comercial</div>
+        </div>
+
+        <div class="viewport-terminal">
+            <div id="terminal-output">
+                <!-- Carga de bienvenida institucional -->
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <button class="btn-navegacion" onclick="navegarSeccion(-1)">&larr; ANTERIOR</button>
+            <div class="page-indicator" id="indicator">01 / 05</div>
+            <button class="btn-navegacion" onclick="navegarSeccion(1)">SIGUIENTE &rarr;</button>
+        </div>
+
+        <div class="footer-mostrador">
+            INFRAESTRUCTURA CERTIFICADA DE REGISTRO Y MEMORIA NUMISMÁTICA
+        </div>
+    </div>
+
+    <script>
+        const dossierPrincipal = [
+            "<b>1. Presentación Institucional:</b><br>Estimado visitante, comercio o inversor: le damos la bienvenida al mostrador principal de la Vía del Milisegundo. Operamos desde la Posta 1001 bajo un estricto rigor de gobernanza temporal, ofreciendo infraestructura de certificación, trazabilidad y preservación de valor patrimonial exenta de intermediaciones burocráticas innecesarias.",
+            "<b>2. El Principio del Tiempo y la Estampadora 1001:</b><br>Nuestro sistema no conjetura ni interpreta la realidad; la registra con precisión milimétrica. Mediante la Estampadora 1001, cada suceso de relevancia institucional o comercial se fija a un segundo exacto de la línea temporal (por ejemplo: <i>04/08/2026 - 11:16:41.000</i>), generando un activo numismático de indiscutible unicidad.",
+            "<b>3. Integridad Criptográfica (El Protocolo Hash-Q):</b><br>Cada activo emitido se encuentra respaldado por un identificador alfanumérico unívoco (ej: <i>HASH-Q: 9FA43E-1001</i>). Esta huella digital sella de manera privada e inalterable la titularidad del registro, garantizando seguridad jurídica y absoluta transparencia en la tenencia del segundo certificado.",
+            "<b>4. Valor Diferencial para el Sector Comercial (La EstampiYA! de Colección):</b><br>Como herramienta estratégica de fidelización institucional, el establecimiento comercial adherido puede obsequiar a su cliente un activo numismático coleccionable digital como testimonio de su paso por el local. Este elemento funciona de manera estrictamente complementaria a los circuitos administrativos vigentes, constituyendo una pieza de arte y memoria de marca de alto impacto perdurable.",
+            "<b>5. Conclusión y Adhesión Definitiva:</b><br>Sumarse a la Vía del Milisegundo representa una decisión de vanguardia para marcas e inversores que comprenden el valor de la distinción patrimonial. Lo invitamos a consolidar su posición en la historia institucional de nuestra comunidad mediante un modelo serio, elegante y blindado contra la obsolescencia."
+        ];
+
+        let indiceActual = 0;
+
+        function actualizarPantalla() {
+            document.getElementById('terminal-output').innerHTML = dossierPrincipal[indiceActual];
+            document.getElementById('indicator').textContent = `0${indiceActual + 1} / 0${dossierPrincipal.length}`;
+        }
+
+        function navegarSeccion(direccion) {
+            indiceActual += direccion;
+            if (indiceActual < 0) {
+                indiceActual = dossierPrincipal.length - 1;
+            } else if (indiceActual >= dossierPrincipal.length) {
+                indiceActual = 0;
+            }
+            actualizarPantalla();
+        }
+
+        // Inicialización del mostrador principal
+        actualizarPantalla();
+    </script>
+</body>
+</html>
