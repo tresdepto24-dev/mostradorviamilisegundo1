@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Mostrador Principal // Vía del Milisegundo - Posta 1001</title>
+    <title>La Vía del Milisegundo // El Mostrador Principal de la Posta 1001</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
-            --bg-base: #05070b;
-            --panel-bg: #0d1322;
-            --border-line: #26334d;
-            --gold-accent: #c59b27;
-            --gold-hover: #dfb135;
-            --text-main: #f1f5f9;
+            --bg-base: #060913;
+            --panel-bg: #0f172a;
+            --border-line: #1e293b;
+            --gold-accent: #f59e0b;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --screen-text: #38bdf8;
+            --screen-green: #34d399;
         }
 
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Courier New', Courier, monospace;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,56 +30,55 @@
             box-sizing: border-box;
         }
 
-        .mostrador-container {
+        .main-container {
             background-color: var(--panel-bg);
-            border: 1px solid var(--border-line);
-            border-top: 3px solid var(--gold-accent);
-            padding: 40px;
-            border-radius: 4px;
+            border: 3px solid var(--border-line);
+            border-top: 5px solid var(--gold-accent);
+            padding: 35px;
+            border-radius: 8px;
             width: 100%;
-            max-width: 740px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            max-width: 720px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
             box-sizing: border-box;
         }
 
-        .header-mostrador {
+        .header-section {
             text-align: center;
             border-bottom: 1px solid var(--border-line);
             padding-bottom: 20px;
             margin-bottom: 25px;
         }
 
-        .institucional-tag {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.65rem;
+        .tag-oficial {
+            font-size: 0.7rem;
             color: var(--gold-accent);
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 8px;
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
         h1 {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: #ffffff;
             margin: 0;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .sub-institucional {
-            font-size: 0.8rem;
+        .sub-header {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 5px;
             font-style: italic;
         }
 
-        .viewport-terminal {
-            background-color: #020407;
-            border: 1px solid var(--border-line);
-            border-radius: 2px;
-            padding: 30px;
-            min-height: 220px;
+        .viewport-box {
+            background-color: #020408;
+            border: 2px inset var(--border-line);
+            border-radius: 6px;
+            padding: 25px;
+            min-height: 240px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -87,58 +86,121 @@
             text-align: left;
         }
 
-        #terminal-output {
-            font-family: 'Courier New', Courier, monospace;
+        #story-output {
             font-size: 0.85rem;
             line-height: 1.8;
-            color: var(--screen-text);
+            color: var(--screen-green);
         }
 
-        #terminal-output b {
+        #story-output b {
             color: #fbbf24;
         }
 
-        .control-panel {
+        .controls-panel {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 15px;
+            margin-bottom: 25px;
         }
 
-        .btn-navegacion {
-            background: #111827;
+        .btn-nav {
+            background: #1e293b;
             color: var(--text-main);
-            border: 1px solid #374151;
+            border: 1px solid #475569;
             padding: 12px 20px;
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.8rem;
-            border-radius: 2px;
+            border-radius: 4px;
             cursor: pointer;
             letter-spacing: 1px;
-            transition: all 0.2s ease;
-            flex: 1;
             font-weight: bold;
+            flex: 1;
+            transition: all 0.2s;
         }
 
-        .btn-navegacion:hover {
-            background: #1f2937;
+        .btn-nav:hover {
+            background: #334155;
             border-color: var(--gold-accent);
             color: var(--gold-accent);
         }
 
-        .page-indicator {
-            font-family: 'Courier New', Courier, monospace;
+        .counter-display {
             font-size: 0.75rem;
             color: var(--text-muted);
             min-width: 70px;
             text-align: center;
         }
 
-        .footer-mostrador {
-            margin-top: 30px;
+        /* Sección del taller de la Fiat 147 1100 (Estampadora Multifecha) */
+        .workshop-section {
+            background-color: #080c14;
+            border: 1px dashed #334155;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .workshop-title {
+            font-size: 0.8rem;
+            color: var(--gold-accent);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .input-row input[type="text"] {
+            background: #111827;
+            border: 1px solid #4b5563;
+            color: #fff;
+            padding: 8px;
             font-family: 'Courier New', Courier, monospace;
+            border-radius: 4px;
+            text-align: center;
+            width: 130px;
+        }
+
+        .input-row input[type="file"] {
+            font-size: 0.7rem;
+            color: #fff;
+        }
+
+        .btn-stamp {
+            background: linear-gradient(135deg, #b91c1c, #dc2626);
+            color: #ffffff;
+            border: 1px solid #f87171;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-stamp:hover {
+            filter: brightness(1.15);
+        }
+
+        .footer-mostrador {
+            margin-top: 25px;
             font-size: 0.65rem;
-            color: #4b5563;
+            color: #475569;
             text-align: center;
             border-top: 1px solid var(--border-line);
             padding-top: 15px;
@@ -148,58 +210,84 @@
 </head>
 <body>
 
-    <div class="mostrador-container">
-        <div class="header-mostrador">
-            <div class="institucional-tag">Posta 1001 // Ventaniya Oficial</div>
+    <div class="main-container" id="areaCapturable">
+        <div class="header-section">
+            <div class="tag-oficial">Posta 1001 // Ventaniya Oficial</div>
             <h1>El Mostrador Principal de la Vía del Milisegundo</h1>
-            <div class="sub-institucional">Protocolo Soberano de Adhesión Institucional, Patrimonial y Comercial</div>
+            <div class="sub-header">Un viaje mágico y real operando desde Mar del Plata</div>
         </div>
 
-        <div class="viewport-terminal">
-            <div id="terminal-output">
-                <!-- Carga de bienvenida institucional -->
+        <div class="viewport-box">
+            <div id="story-output">
+                <!-- Carga de diálogo -->
             </div>
         </div>
 
-        <div class="control-panel">
-            <button class="btn-navegacion" onclick="navegarSeccion(-1)">&larr; ANTERIOR</button>
-            <div class="page-indicator" id="indicator">01 / 05</div>
-            <button class="btn-navegacion" onclick="navegarSeccion(1)">SIGUIENTE &rarr;</button>
+        <div class="controls-panel">
+            <button class="btn-nav" onclick="cambiarPagina(-1)">&larr; ANTERIOR</button>
+            <div class="counter-display" id="pageCount">01 / 05</div>
+            <button class="btn-nav" onclick="cambiarPagina(1)">SIGUIENTE &rarr;</button>
+        </div>
+
+        <!-- Taller de la Estampadora de Multifecha (Fiat-1100-47a) -->
+        <div class="workshop-section">
+            <div class="workshop-title">🛠️ ESTAMPADORA DE MULTIFECHA: FIAT-1100-47A</div>
+            <div class="input-row">
+                <span>Fecha Elegida:</span>
+                <input type="text" id="customDate" value="21/09/1994">
+                <span>Imagen (PNG/JPG):</span>
+                <input type="file" id="customImage" accept="image/*">
+            </div>
+            <button class="btn-stamp" onclick="emitirEstampaPersonalizada()">🚀 ACTIVAR MOTOR 1100 Y DESCARGAR ESTAMPIYA!</button>
         </div>
 
         <div class="footer-mostrador">
-            INFRAESTRUCTURA CERTIFICADA DE REGISTRO Y MEMORIA NUMISMÁTICA
+            COLECCIONABLE ORIGINAL DE LA VÍA DEL MILISEGUNDO // MAR DEL PLATA
         </div>
     </div>
 
     <script>
-        const dossierPrincipal = [
-            "<b>1. Presentación Institucional:</b><br>Estimado visitante, comercio o inversor: le damos la bienvenida al mostrador principal de la Vía del Milisegundo. Operamos desde la Posta 1001 bajo un estricto rigor de gobernanza temporal, ofreciendo infraestructura de certificación, trazabilidad y preservación de valor patrimonial exenta de intermediaciones burocráticas innecesarias.",
-            "<b>2. El Principio del Tiempo y la Estampadora 1001:</b><br>Nuestro sistema no conjetura ni interpreta la realidad; la registra con precisión milimétrica. Mediante la Estampadora 1001, cada suceso de relevancia institucional o comercial se fija a un segundo exacto de la línea temporal (por ejemplo: <i>04/08/2026 - 11:16:41.000</i>), generando un activo numismático de indiscutible unicidad.",
-            "<b>3. Integridad Criptográfica (El Protocolo Hash-Q):</b><br>Cada activo emitido se encuentra respaldado por un identificador alfanumérico unívoco (ej: <i>HASH-Q: 9FA43E-1001</i>). Esta huella digital sella de manera privada e inalterable la titularidad del registro, garantizando seguridad jurídica y absoluta transparencia en la tenencia del segundo certificado.",
-            "<b>4. Valor Diferencial para el Sector Comercial (La EstampiYA! de Colección):</b><br>Como herramienta estratégica de fidelización institucional, el establecimiento comercial adherido puede obsequiar a su cliente un activo numismático coleccionable digital como testimonio de su paso por el local. Este elemento funciona de manera estrictamente complementaria a los circuitos administrativos vigentes, constituyendo una pieza de arte y memoria de marca de alto impacto perdurable.",
-            "<b>5. Conclusión y Adhesión Definitiva:</b><br>Sumarse a la Vía del Milisegundo representa una decisión de vanguardia para marcas e inversores que comprenden el valor de la distinción patrimonial. Lo invitamos a consolidar su posición en la historia institucional de nuestra comunidad mediante un modelo serio, elegante y blindado contra la obsolescencia."
+        const historiaOficial = [
+            "<b>1. El Descubrimiento de la Vía del Milisegundo:</b><br>Hola, bienvenido. Queremos contarte algo hermoso que descubrimos casi sin querer: la <i>Vía del Milisegundo</i>. Pusimos en marcha la <b>Posta 1001</b> operando directamente desde Mar del Plata, un punto de encuentro donde el tiempo deja de ser abstracto y se convierte en una obra de arte para coleccionar.",
+            "<b>2. La Magia de las EstampiYA! de Tiempo:</b><br>Para lograrlo, inventamos la máquina <b>estampadora de estampillas 1001</b>. Su trabajo es sencillo y fascinante: estampa la línea exacta del milisegundo en que ocurren las cosas (por ejemplo: <i>04/08/2026 - 09:33:59.000</i>), creando las <i>estampiYA!</i> de tiempo en más de 200 variedades visuales únicas.",
+            "<b>3. El Poder Orbital de la AR-1000-A:</b><br>A eso le sumamos la máquina <b>AR-1000-A</b>, un dispositivo especial que toma la línea de tiempo y le inyecta información satelital y estética en distintas variedades. Fusiona tus fotos urbanas, murales y recuerdos con sellos visuales de altísima calidad.",
+            "<b>4. La Vía Comercial del Milisegundo:</b><br>Esto se pone mejor en los comercios de barrio, empresas líderes y ciudades de la Vía. Cuando visitás un local, el comercio te regala una <b>estampiYA! de tiempo</b> como recuerdo exclusivo de su marca y de la ciudad. Es una pieza de colección original para guardar para siempre, un detalle de distinción para el cliente.",
+            "<b>5. Tradición y Romantización del Fechador:</b><br>Y para completar esta locura linda, sumamos la nueva máquina estampadora de multifecha: la <b>fiat-1100-47a</b>. Acá no hay vueltas raras ni dialectos complejos; es puro romanticismo de fechadores puros donde elegís tu propia fecha para tus imágenes en PNG o JPG y te llevás tu estampilla original al instante."
         ];
 
-        let indiceActual = 0;
+        let indiceHistoria = 0;
 
-        function actualizarPantalla() {
-            document.getElementById('terminal-output').innerHTML = dossierPrincipal[indiceActual];
-            document.getElementById('indicator').textContent = `0${indiceActual + 1} / 0${dossierPrincipal.length}`;
+        function renderizarPagina() {
+            document.getElementById('story-output').innerHTML = historiaOficial[indiceHistoria];
+            document.getElementById('pageCount').textContent = `0${indiceHistoria + 1} / 0${historiaOficial.length}`;
         }
 
-        function navegarSeccion(direccion) {
-            indiceActual += direccion;
-            if (indiceActual < 0) {
-                indiceActual = dossierPrincipal.length - 1;
-            } else if (indiceActual >= dossierPrincipal.length) {
-                indiceActual = 0;
+        function cambiarPagina(direccion) {
+            indiceHistoria += direccion;
+            if (indiceHistoria < 0) {
+                indiceHistoria = historiaOficial.length - 1;
+            } else if (indiceHistoria >= historiaOficial.length) {
+                indiceHistoria = 0;
             }
-            actualizarPantalla();
+            renderizarPagina();
         }
 
-        // Inicialización del mostrador principal
-        actualizarPantalla();
+        function emitirEstampaPersonalizada() {
+            const fecha = document.getElementById('customDate').value;
+            alert(`⚡ ¡MOTOR 1100 EN MARCHA!\n\nEstampilla generada con éxito.\nFecha seleccionada: [ ${fecha} ]\nA través de la estampadora Fiat-1100-47a.\n\nPreparando descarga de la pieza de colección...`);
+            
+            setTimeout(() => {
+                const elemento = document.getElementById('areaCapturable');
+                html2canvas(elemento, { backgroundColor: '#0f172a', scale: 2 }).then(canvas => {
+                    const enlace = document.createElement('a');
+                    enlace.download = `EstampiYA-Mil100-${fecha.replace(/\//g, '-')}.png`;
+                    enlace.href = canvas.toDataURL('image/png');
+                    enlace.click();
+                });
+            }, 500);
+        }
+
+        renderizarPagina();
     </script>
 </body>
 </html>
